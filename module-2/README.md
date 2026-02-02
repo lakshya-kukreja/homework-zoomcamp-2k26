@@ -12,6 +12,7 @@
 
     #### SOLUTION : 128.25 MiB
     ![Solution Screenshot](../images/7.png)
+    ![Solution Screenshot](../images/13.png)
 
 2) What is the rendered value of the variable `file` when the inputs `taxi` is set to `green`, `year` is set to `2020`, and `month` is set to `04` during execution?
 - `{{inputs.taxi}}_tripdata_{{inputs.year}}-{{inputs.month}}.csv` 
