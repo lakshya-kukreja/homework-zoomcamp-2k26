@@ -1,0 +1,39 @@
+id: question_1
+namespace: zoomcamp
+
+variables:
+  file: "yellow_tripdata_2020-12.csv"
+  data: "{{outputs.extract.outputFiles['yellow_tripdata_2020-12.csv']}}"
+
+tasks:
+  - id: set_label
+    type: io.kestra.plugin.core.execution.Labels
+    labels:
+      file: "{{render(vars.file)}}"
+      taxi: "yellow"
+
+  - id: extract
+    type: io.kestra.plugin.scripts.shell.Commands
+    outputFiles:
+      - "*.csv"
+    taskRunner:
+      type: io.kestra.plugin.core.runner.Process
+    commands:
+      - wget -qO- https://github.com/DataTalksClub/nyc-tlc-data/releases/download/yellow/{{render(vars.file)}}.gz | gunzip > {{render(vars.file)}}
+
+  - id: get_uncompressed_file_size
+    type: io.kestra.plugin.core.storage.Size
+    uri: "{{outputs.extract.outputFiles['yellow_tripdata_2020-12.csv']}}"
+
+
+outputs:
+  - id: uncompressed_file_size
+    type: STRING
+    value: "{{ outputs.get_uncompressed_file_size.size}}"
+
+pluginDefaults:
+  - type: io.kestra.plugin.jdbc.postgresql
+    values:
+      url: jdbc:postgresql://pgdatabase:5432/ny_taxi
+      username: root
+      password: root

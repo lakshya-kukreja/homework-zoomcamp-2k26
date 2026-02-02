@@ -1,0 +1,39 @@
+# Python - ignores compiled files and caches everywhere
+**/__pycache__/
+*.py[cod]
+*$py.class
+*.pkl
+*.log
+
+# Virtual environments
+.venv/
+venv/
+ENV/
+env/
+
+# Jupyter / IPython
+.ipynb_checkpoints
+
+# IDEs
+.vscode/
+.idea/
+*.code-workspace
+
+# Data files (Crucial for Zoomcamp to avoid pushing large datasets)
+*.csv
+*.parquet
+*.jsonl
+*.avro
+output/
+data/
+
+# Credentials and Docker
+.env
+.env_encoded
+.gcp_keys/
+*.json
+docker-compose.override.yml
+
+# OS files
+.DS_Store
+Thumbs.db
