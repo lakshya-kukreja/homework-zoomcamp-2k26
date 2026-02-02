@@ -44,7 +44,7 @@
 - 706,911
 - 1,925,152
 - 2,561,031
-    #### SOLUTION : 1,734,051
+    #### SOLUTION : 1,925,152
     ![Solution Screenshot](../images/11.png)
 
 6) How would you configure the timezone to New York in a Schedule trigger?
